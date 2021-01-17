@@ -13,14 +13,39 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     
     //aqui van las variables de instancia
     double operando1 = 0;   //almacena el primer número
-    String operancion = ""; //almacena la operación que se ha pulsado
+    String operacion = ""; //almacena la operación que se ha pulsado
+    
     /**
      * Creates new form VentanaCalculadora
      */
+    
     public VentanaCalculadora() {
         initComponents();
     }
 
+    public void escribeNumeroEnPantalla(String numero){
+        if (display.getText().equals("0") ){
+            display.setText(numero);
+        }
+        else {
+            display.setText(display.getText() + numero);
+        }
+    }
+        //La función que se encarga de trabajar con la operación pulsada
+    public void operacionPulsada( String _operacion){
+        //Guardo el valor de la pantalla en la variable operando1
+        operando1 = Double.valueOf(display.getText());
+        
+        //Pongo a cero la pantalla
+        display.setText("0");
+        
+        //Guardo la operación que he pulsado
+        operacion = _operacion;
+    }
+    public void vueltaAlInicio (String _operacion){
+        //vuelve al punto de partida
+        display.setText("0");
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,12 +65,16 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         Button3 = new javax.swing.JButton();
         Button1 = new javax.swing.JButton();
         Button2 = new javax.swing.JButton();
-        Buttonx = new javax.swing.JButton();
+        Buttonmultiplicar = new javax.swing.JButton();
         Button0 = new javax.swing.JButton();
         Buttonigual = new javax.swing.JButton();
         Buttonsuma = new javax.swing.JButton();
         Buttondividir = new javax.swing.JButton();
         Buttonresta = new javax.swing.JButton();
+        RESET = new javax.swing.JButton();
+        Raiz = new javax.swing.JButton();
+        Logaritmo = new javax.swing.JButton();
+        nºelevado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,24 +95,59 @@ public class VentanaCalculadora extends javax.swing.JFrame {
 
         Button9.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button9.setText("9");
+        Button9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button9ActionPerformed(evt);
+            }
+        });
 
         Button5.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button5.setText("5");
+        Button5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button5ActionPerformed(evt);
+            }
+        });
 
         Button4.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button4.setText("4");
+        Button4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button4ActionPerformed(evt);
+            }
+        });
 
         Button6.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button6.setText("6");
+        Button6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button6ActionPerformed(evt);
+            }
+        });
 
         Button7.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button7.setText("7");
+        Button7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button7ActionPerformed(evt);
+            }
+        });
 
         Button3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button3.setText("3");
+        Button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button3ActionPerformed(evt);
+            }
+        });
 
         Button1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button1.setText("1");
+        Button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button1ActionPerformed(evt);
+            }
+        });
 
         Button2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Button2.setText("2");
@@ -93,11 +157,11 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             }
         });
 
-        Buttonx.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        Buttonx.setText("x");
-        Buttonx.addActionListener(new java.awt.event.ActionListener() {
+        Buttonmultiplicar.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        Buttonmultiplicar.setText("*");
+        Buttonmultiplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonxActionPerformed(evt);
+                ButtonmultiplicarActionPerformed(evt);
             }
         });
 
@@ -111,12 +175,27 @@ public class VentanaCalculadora extends javax.swing.JFrame {
 
         Buttonigual.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Buttonigual.setText("=");
+        Buttonigual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonigualActionPerformed(evt);
+            }
+        });
 
         Buttonsuma.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Buttonsuma.setText("+");
+        Buttonsuma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonsumaActionPerformed(evt);
+            }
+        });
 
         Buttondividir.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Buttondividir.setText("/");
+        Buttondividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtondividirActionPerformed(evt);
+            }
+        });
 
         Buttonresta.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         Buttonresta.setText("-");
@@ -126,14 +205,52 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        RESET.setFont(new java.awt.Font("Bodoni MT Black", 0, 48)); // NOI18N
+        RESET.setText("RESET");
+        RESET.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RESETActionPerformed(evt);
+            }
+        });
+
+        Raiz.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        Raiz.setText("Raiz");
+        Raiz.setToolTipText("");
+        Raiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RaizActionPerformed(evt);
+            }
+        });
+
+        Logaritmo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        Logaritmo.setText("Log");
+        Logaritmo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogaritmoActionPerformed(evt);
+            }
+        });
+
+        nºelevado.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        nºelevado.setText("x^2");
+        nºelevado.setToolTipText("");
+        nºelevado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nºelevadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(display, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(RESET, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(display, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -163,66 +280,173 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                                     .addComponent(Buttonigual, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Buttonresta, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Buttondividir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Buttonx, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Buttonsuma, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Buttonmultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Raiz, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Buttondividir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Logaritmo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Buttonsuma, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Buttonresta, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(nºelevado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(15, 15, 15))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(display, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buttonx, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Buttonmultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Raiz, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Buttondividir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Button4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Logaritmo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Button3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buttonresta, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Buttonsuma, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buttonigual, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Button0, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(nºelevado, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buttonresta, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buttonsuma, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buttonigual, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button0, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(RESET, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+        
     private void Button0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button0ActionPerformed
-        // TODO add your handling code here:
+        escribeNumeroEnPantalla("0");
     }//GEN-LAST:event_Button0ActionPerformed
-
-    private void ButtonxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonxActionPerformed
+        
+    private void ButtonmultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonmultiplicarActionPerformed
+        operacionPulsada("*");
+    }//GEN-LAST:event_ButtonmultiplicarActionPerformed
 
     private void Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2ActionPerformed
-        // TODO add your handling code here:
+        escribeNumeroEnPantalla("2");
     }//GEN-LAST:event_Button2ActionPerformed
-
+        
     private void Button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button8ActionPerformed
-        // TODO add your handling code here:
+        escribeNumeroEnPantalla("8");
     }//GEN-LAST:event_Button8ActionPerformed
-
+        
     private void ButtonrestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonrestaActionPerformed
-        // TODO add your handling code here:
+        operacionPulsada("-");
     }//GEN-LAST:event_ButtonrestaActionPerformed
+
+    private void ButtonsumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonsumaActionPerformed
+        operacionPulsada("+");
+    }//GEN-LAST:event_ButtonsumaActionPerformed
+
+    private void ButtonigualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonigualActionPerformed
+        //El boton igual tiene que saber que operación se pulsó, como ese valor lo guarde en la variable operación, monto un if para que dependiendo de ese valor realice la operacion correspondiente
+        //Primero guardo lo que haya en la pantalla en una variable double
+        double operando2 = Double.valueOf(display.getText());
+        
+        //si la operación era la suma:
+        if (operacion.equals("-")){
+            operando1 = operando1 - operando2;
+        }
+        //RESTA
+        if (operacion.equals("+")){
+            operando1 = operando1 + operando2;
+        }
+        //Multiplicación
+         if (operacion.equals("*")){
+            operando1 = operando1 * operando2;
+        }
+        //División
+          if (operacion.equals("/")){
+            operando1 = operando1 / operando2;
+        }
+          if (operacion.equals("Raiz")){
+          operando1 = Math.sqrt(operando1);
+          }
+          if (operacion.equals("Log")){
+          operando1 = Math.log10(operando1);
+          }
+           if (operacion.equals("x^2")){
+         operando1 = operando1 * operando1;
+          } 
+        //por último, muestro el resultado por pantalla
+        display.setText(String.valueOf(operando1));
+    }//GEN-LAST:event_ButtonigualActionPerformed
+
+    private void Button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button9ActionPerformed
+        escribeNumeroEnPantalla("9");
+    }//GEN-LAST:event_Button9ActionPerformed
+
+    private void Button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button7ActionPerformed
+        escribeNumeroEnPantalla("7");
+    }//GEN-LAST:event_Button7ActionPerformed
+
+    private void Button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button6ActionPerformed
+        escribeNumeroEnPantalla("6");
+    }//GEN-LAST:event_Button6ActionPerformed
+
+    private void Button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button5ActionPerformed
+        escribeNumeroEnPantalla("5");
+    }//GEN-LAST:event_Button5ActionPerformed
+
+    private void Button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4ActionPerformed
+        escribeNumeroEnPantalla("4");
+    }//GEN-LAST:event_Button4ActionPerformed
+
+    private void Button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3ActionPerformed
+        escribeNumeroEnPantalla("3");
+    }//GEN-LAST:event_Button3ActionPerformed
+
+    private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
+        escribeNumeroEnPantalla("1");
+    }//GEN-LAST:event_Button1ActionPerformed
+
+    private void ButtondividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtondividirActionPerformed
+        operacionPulsada("/");
+    }//GEN-LAST:event_ButtondividirActionPerformed
+
+    private void RESETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RESETActionPerformed
+        vueltaAlInicio("RESET");
+    }//GEN-LAST:event_RESETActionPerformed
+
+    private void RaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizActionPerformed
+        operacionPulsada("Raiz");
+    }//GEN-LAST:event_RaizActionPerformed
+
+    private void LogaritmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogaritmoActionPerformed
+        operacionPulsada("Log");
+    }//GEN-LAST:event_LogaritmoActionPerformed
+
+    private void nºelevadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nºelevadoActionPerformed
+        operacionPulsada("x^2");
+    }//GEN-LAST:event_nºelevadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,9 +496,13 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton Button9;
     private javax.swing.JButton Buttondividir;
     private javax.swing.JButton Buttonigual;
+    private javax.swing.JButton Buttonmultiplicar;
     private javax.swing.JButton Buttonresta;
     private javax.swing.JButton Buttonsuma;
-    private javax.swing.JButton Buttonx;
+    private javax.swing.JButton Logaritmo;
+    private javax.swing.JButton RESET;
+    private javax.swing.JButton Raiz;
     private javax.swing.JLabel display;
+    private javax.swing.JButton nºelevado;
     // End of variables declaration//GEN-END:variables
 }
